@@ -20,4 +20,12 @@ class graylog2::radio (
     require => Exec['get-radio'],
   }
 
+  file { '/etc/init.d/graylog2-radio':
+    ensure => present,
+    owner  => 'root',
+    group  => 'root',
+    mode   => '0755',
+    source => 'puppet:///modules/graylog2/radio.init'
+  }
+
 }
