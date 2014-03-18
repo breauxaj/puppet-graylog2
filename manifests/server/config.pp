@@ -1,7 +1,7 @@
 define graylog2::server::config (
 
 ){
-  file { '/usr/local/graylog2-server/graylog2.conf':
+  file { '/etc/graylog2.conf':
     ensure  => present,
     owner   => 'root',
     group   => 'root',

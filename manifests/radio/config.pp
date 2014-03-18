@@ -12,7 +12,7 @@ define graylog2::radio::config (
   $processor_wait_strategy = 'blocking',
   $ring_size = '1024'
 ){
-  file { '/usr/local/graylog2-radio/graylog2-radio.conf':
+  file { '/etc/graylog2-radio.conf':
     ensure  => present,
     owner   => 'root',
     group   => 'root',
