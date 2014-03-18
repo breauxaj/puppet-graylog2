@@ -20,12 +20,20 @@ class graylog2::server (
     require => Exec['get-server'],
   }
 
-  file { '/etc/init.d/graylog2-radio':
+  file { '/usr/local/graylog2-server':
+    ensure  => 'link',
+    owner   => 'root',
+    group   => 'root',
+    target  => "/usr/local/graylog2-server-${version}",
+    require => Exec['untar-server'],
+  }
+
+  file { '/etc/init.d/graylog2-server':
     ensure => present,
     owner  => 'root',
     group  => 'root',
     mode   => '0755',
-    source => 'puppet:///modules/graylog2/radio.init'
+    source => 'puppet:///modules/graylog2/server.init'
   }
 
 }

@@ -20,6 +20,14 @@ class graylog2::radio (
     require => Exec['get-radio'],
   }
 
+  file { '/usr/local/graylog2-radio':
+    ensure  => 'link',
+    owner   => 'root',
+    group   => 'root',
+    target  => "/usr/local/graylog2-radio-${version}",
+    require => Exec['untar-radio'],
+  }
+
   file { '/etc/init.d/graylog2-radio':
     ensure => present,
     owner  => 'root',
